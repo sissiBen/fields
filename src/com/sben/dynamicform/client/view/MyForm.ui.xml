@@ -1,0 +1,31 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:b="urn:import:org.gwtbootstrap3.client.ui">
+	<ui:style>
+	.important {
+		font-weight: bold;
+	}
+	</ui:style>
+	<g:HTMLPanel>
+		<b:Container   width="100%" height="100%">
+ 
+
+<b:Form ui:field="form" type="HORIZONTAL" >
+
+ <b:FieldSet ui:field="fieldSet">
+   
+
+   
+     <b:Legend>Mon formulaire</b:Legend>
+     
+   
+
+      
+  </b:FieldSet>
+  
+</b:Form>
+
+  </b:Container>
+	</g:HTMLPanel>
+</ui:UiBinder> 

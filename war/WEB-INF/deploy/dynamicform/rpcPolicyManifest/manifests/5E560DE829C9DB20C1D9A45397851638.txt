@@ -1,0 +1,2 @@
+serviceClass: com.sben.dynamicform.client.GreetingService
+path: 36BCAC03F9A4F0496E612BEAB0B00234.gwt.rpc

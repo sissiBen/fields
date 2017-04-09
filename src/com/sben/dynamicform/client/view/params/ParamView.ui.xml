@@ -1,0 +1,16 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:b="urn:import:org.gwtbootstrap3.client.ui">
+	<ui:style>
+	.important {
+		font-weight: bold;
+	}
+	</ui:style>
+	<b:FormGroup>
+     <b:FormLabel ui:field="label" addStyleNames="col-lg-2"  styleName="{.text-align-left}">param</b:FormLabel>
+      <g:FlowPanel ui:field="flowPanel" addStyleNames="col-lg-4">
+       
+      </g:FlowPanel>
+    </b:FormGroup>
+</ui:UiBinder> 
