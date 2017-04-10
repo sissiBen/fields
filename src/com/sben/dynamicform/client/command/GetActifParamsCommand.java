@@ -57,10 +57,21 @@ public class GetActifParamsCommand implements Command{
 	   value.setName("Ceinture noire");
 	   values.add(value);
 	   
-	   
 	   param.setValues(values);
-	   
 	   param.setRequired(false);
+	   list.add(param);
+	   
+	   
+	   param= new Param();
+	   param.setId(5);
+	   param.setType(Param.DATE_TYPE);
+	   param.setName("Date de validation");
+	   list.add(param);
+	   
+	   param= new Param();
+	   param.setId(6);
+	   param.setType(Param.BOOLEAN_TYPE);
+	   param.setName("Yes");
 	   list.add(param);
 	   
 	   return list;

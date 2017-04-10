@@ -11,6 +11,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.sben.dynamicform.client.ParamFactory;
 import com.sben.dynamicform.client.model.Param;
 import com.sben.dynamicform.client.model.PossibleValue;
 

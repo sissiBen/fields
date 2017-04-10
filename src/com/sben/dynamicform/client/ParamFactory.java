@@ -1,7 +1,8 @@
-package com.sben.dynamicform.client.view.params;
+package com.sben.dynamicform.client;
 
 import java.io.IOException;
 
+import org.gwtbootstrap3.client.ui.CheckBox;
 import org.gwtbootstrap3.client.ui.DoubleBox;
 import org.gwtbootstrap3.client.ui.IntegerBox;
 import org.gwtbootstrap3.client.ui.TextBox;
@@ -9,6 +10,7 @@ import org.gwtbootstrap3.client.ui.ValueListBox;
 
 import com.google.gwt.text.shared.Renderer;
 import com.google.gwt.user.client.ui.Widget;
+import com.sben.dynamicform.client.extra.MyDatePicker;
 import com.sben.dynamicform.client.model.Param;
 import com.sben.dynamicform.client.model.PossibleValue;
 
@@ -24,10 +26,17 @@ public class ParamFactory {
 			case Param.LIST_TYPE:
 				return getListParamWiget(param);
 				
+			case Param.DATE_TYPE:
+				return getDateParamWiget(param);
+				
+			case Param.BOOLEAN_TYPE:
+				return getBooleanParamWiget(param);
+				
 			default:
 				return null;
 			}
 		}
+
 
 		private static ValueListBox<PossibleValue> getListParamWiget(Param param) {
 			ValueListBox<PossibleValue> widget = new ValueListBox<PossibleValue>(new Renderer<PossibleValue>() {
@@ -56,17 +65,20 @@ public class ParamFactory {
 			return widget;
 		}
 
-		private static DoubleBox getDoubleParamWiget(Param param) {
-			DoubleBox widget = new DoubleBox() ;
+
+		
+		private static MyDatePicker getDateParamWiget(Param param) {
+			MyDatePicker widget = new MyDatePicker() ;
 			widget.setAllowBlank(!param.isRequired());
 			return widget;
 		}
 
-		private static IntegerBox getIntParamWiget(Param param) {
-			IntegerBox widget = new IntegerBox() ;
-			widget.setAllowBlank(!param.isRequired());
+		private static CheckBox getBooleanParamWiget(Param param) {
+			CheckBox widget = new CheckBox() ;
 			return widget;
 		}
+
+		
 		
 		
 }

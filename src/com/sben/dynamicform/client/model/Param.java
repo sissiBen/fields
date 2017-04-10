@@ -12,9 +12,8 @@ public class Param {
 	
 	public static final String STRING_TYPE = "stringType";
 	public static final String LIST_TYPE = "listType";
-	
-	public static final String ADHERENT_MODEL = "adherentModel";
-	public static final String ASSOCIATION_MODEL = "associationModel";
+	public static final String DATE_TYPE = "dateType";
+	public static final String BOOLEAN_TYPE = "booleanType";
 	
 	private int id;
 	private String name;
@@ -92,36 +91,4 @@ public class Param {
 		this.values = values;
 	}
 
-
-
-	interface Factory extends AutoBeanFactory {
-		  AutoBean<ParamInterface> instance();
-		  
-		}
-	
-	Factory factory = GWT.create(Factory.class);
-	 
-	ParamInterface instance() {
-		    // Construct the AutoBean
-		    AutoBean<ParamInterface> model = factory.instance();
-		    
-		    return model.as();
-		  }
-	 
-	 public ParamInterface deserializeFromJson(String json) {
-		    AutoBean<ParamInterface> bean = AutoBeanCodex.decode(factory, ParamInterface.class, json);
-		    
-		   AutoBean<ParamInterface> ccc = AutoBeanCodex.decode(factory, ParamInterface.class, "{\"values\": " + json + "}");
-//		    List<PossibleValue> list = ccc.as().getValues();
-		   ParamInterface param = ccc.as();
-//		   param.setValues(list);
-		    return param;
-		  }
-
-//	 public List<PossibleValue>  deserializeValuesFromJson(String json) {
-//		   List<PossibleValue> list = ((Param) AutoBeanCodex.decode(factory, ParamInterface.class, "{\"values\": " + json + "}")).getValues();
-//		   
-//		    return list;
-//		  }
-	
 }
