@@ -7,6 +7,7 @@ import org.gwtbootstrap3.client.ui.Form;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -26,8 +27,6 @@ public class MyForm extends Composite {
 	FieldSet fieldSet;
 	
 	
-//	private List<ParamView> listParamsView = new ArrayList<ParamView>();
-
 	private static MyFormUiBinder uiBinder = GWT
 			.create(MyFormUiBinder.class);
 
@@ -41,7 +40,6 @@ public class MyForm extends Composite {
 
 	
 	public boolean validate() {
-		System.out.println("Additional Infos validate");
 		boolean bool = true;
 		
 		for (int i = 0; i <fieldSet.getWidgetCount(); i++) {
@@ -86,13 +84,25 @@ public class MyForm extends Composite {
 	}
 	@UiHandler("validatebt")
 	void handleClick(ClickEvent e) {
-	    if(validate()){
-	    	
+		boolean valid =  validate();
+	    if(valid){
+	    	getData();
 	    }
-	    else{
-	    	
-	    }
+	    
 	  }
 
+public JSONObject getData() {
+	JSONObject paramatersMap = new JSONObject();
+		
+	for (int i = 0; i <fieldSet.getWidgetCount(); i++) {
+			ParamView widget = (ParamView) fieldSet.getWidget(i);
+			System.out.println("widget.getParamId()  " + widget.getParam().getName());
+			System.out.println("widget.getValue()  " + widget.getValue());
+			
+			paramatersMap.put(widget.getParam().getId()+"", widget.getValue());
+		}
+		System.out.println("Data on validate : " + paramatersMap.toString());
+		return paramatersMap;
+	}
 
 }

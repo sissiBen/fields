@@ -1,9 +1,10 @@
 package com.sben.dynamicform.client.view.params;
 
+import org.gwtbootstrap3.client.ui.CheckBox;
 import org.gwtbootstrap3.client.ui.FormLabel;
 import org.gwtbootstrap3.client.ui.ValueListBox;
 import org.gwtbootstrap3.client.ui.base.ValueBoxBase;
-
+import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.json.client.JSONString;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -15,6 +16,7 @@ import com.sben.dynamicform.client.ParamFactory;
 import com.sben.dynamicform.client.extra.MyDatePicker;
 import com.sben.dynamicform.client.model.Param;
 import com.sben.dynamicform.client.model.PossibleValue;
+import com.google.gwt.i18n.client.DateTimeFormat;
 
 public class ParamView extends Composite {
 
@@ -52,14 +54,18 @@ public class ParamView extends Composite {
 		else if(paramWidget instanceof MyDatePicker){
 			return ((MyDatePicker)paramWidget).validate();
 		}
+		else if(paramWidget instanceof CheckBox){
+			return true;
+		}
 		
 		return false;
 	}
 
 	public JSONString getValue(){
+		 DateTimeFormat dtf = DateTimeFormat.getFormat("dd-MM-yyyy");
 		
 		if(paramWidget instanceof ValueBoxBase){
-			if(((ValueBoxBase<PossibleValue>) paramWidget).getValue()==null ){
+			if(((ValueBoxBase) paramWidget).getValue()==null ){
 				System.out.println( "valueboxbase getvalue nulll" );
 			}
 			else{
@@ -72,11 +78,18 @@ public class ParamView extends Composite {
 			return  ((ValueListBox<PossibleValue>) paramWidget).getValue()==null ?null: new JSONString(((ValueListBox<PossibleValue>) paramWidget).getValue().getId()+"");
 			
 		}
+		else if(paramWidget instanceof MyDatePicker){
+			return new JSONString(((MyDatePicker) paramWidget).getValue()== null? null : dtf.format(((MyDatePicker) paramWidget).getValue()));
+		}
+		else if(paramWidget instanceof CheckBox){
+			return new JSONString(((CheckBox) paramWidget).getValue()+"");
+		}
 		return null;
 	}
-	
-	public int getParamId() {
-		return param.getId();
+
+	public Param getParam() {
+		return param;
 	}
+
 
 }

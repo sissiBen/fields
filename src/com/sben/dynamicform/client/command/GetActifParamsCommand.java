@@ -30,14 +30,14 @@ public class GetActifParamsCommand implements Command{
 		
 	   List<Param> list= new ArrayList<Param>();
 	   Param param= new Param();
-	   param.setId(3);
+	   param.setId(1);
 	   param.setType(Param.STRING_TYPE);
 	   param.setName("Name");
 	   param.setRequired(true);
 	   list.add(param);
 	   
 	   param= new Param();
-	   param.setId(4);
+	   param.setId(2);
 	   param.setType(Param.LIST_TYPE);
 	   param.setName("Level");
 	   
@@ -63,14 +63,14 @@ public class GetActifParamsCommand implements Command{
 	   
 	   
 	   param= new Param();
-	   param.setId(5);
+	   param.setId(3);
 	   param.setType(Param.DATE_TYPE);
 	   param.setName("Date");
 	   param.setRequired(true);
 	   list.add(param);
 	   
 	   param= new Param();
-	   param.setId(6);
+	   param.setId(5);
 	   param.setType(Param.BOOLEAN_TYPE);
 	   param.setName("Delivery");
 	   list.add(param);
