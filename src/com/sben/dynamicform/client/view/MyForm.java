@@ -1,13 +1,15 @@
 package com.sben.dynamicform.client.view;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.gwtbootstrap3.client.ui.FieldSet;
+import org.gwtbootstrap3.client.ui.Form;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import com.sben.dynamicform.client.command.GetActifParamsCommand;
@@ -17,12 +19,14 @@ import com.sben.dynamicform.client.view.params.ParamView;
 
 public class MyForm extends Composite {
 	
+	@UiField
+	Form form;
 	
 	@UiField
 	FieldSet fieldSet;
 	
 	
-	private List<ParamView> listParamsView = new ArrayList<ParamView>();
+//	private List<ParamView> listParamsView = new ArrayList<ParamView>();
 
 	private static MyFormUiBinder uiBinder = GWT
 			.create(MyFormUiBinder.class);
@@ -40,8 +44,8 @@ public class MyForm extends Composite {
 		System.out.println("Additional Infos validate");
 		boolean bool = true;
 		
-		for (int i = 0; i <listParamsView.size(); i++) {
-			boolean bool1 = listParamsView.get(i).validate();
+		for (int i = 0; i <fieldSet.getWidgetCount(); i++) {
+			boolean bool1 = ((ParamView) fieldSet.getWidget(i)).validate();
 			bool = bool && bool1;
 		}
 		return bool;
@@ -77,29 +81,18 @@ public class MyForm extends Composite {
 			
 			ParamView paramWidget = new ParamView(param);
 			fieldSet.add(paramWidget);
-			listParamsView.add(paramWidget);
 		}
 		
 	}
-
-
-//	public JSONObject getParamaters(JSONObject paramatersMap) {
-//		
-//		paramatersMap.put("job", combofuntion.getValue()==null ?null: new JSONString(combofuntion.getValue().getId()+""));
-//		paramatersMap.put("motherjob", combofuntionM.getValue()==null ?null: new JSONString(combofuntionM.getValue().getId()+""));
-//		paramatersMap.put("fatherjob", combofuntionF.getValue()==null ?null: new JSONString(combofuntionF.getValue().getId()+""));
-//		paramatersMap.put("studylevel", comboYearStudy.getValue()==null ?null: new JSONString(comboYearStudy.getValue().getId()+""));
-//		
-//		for (ParamView widget : listParamsView) {
-//			System.out.println("widget.getParamId()  " + widget.getParamId());
-//			System.out.println("widget.getValue()  " + widget.getValue());
-//			
-//			paramatersMap.put(widget.getParamId()+"", widget.getValue());
-//		}
-//		
-//		return paramatersMap;
-//	}
-
+	@UiHandler("validatebt")
+	void handleClick(ClickEvent e) {
+	    if(validate()){
+	    	
+	    }
+	    else{
+	    	
+	    }
+	  }
 
 
 }

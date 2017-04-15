@@ -13,17 +13,10 @@
 
 <b:Form ui:field="form" type="HORIZONTAL" >
 
- <b:FieldSet ui:field="fieldSet">
-   
+<b:Legend>Mon formulaire</b:Legend>
+ <b:FieldSet ui:field="fieldSet"/>
+ <b:Button ui:field="validatebt">Validate</b:Button>
 
-   
-     <b:Legend>Mon formulaire</b:Legend>
-     
-   
-
-      
-  </b:FieldSet>
-  
 </b:Form>
 
   </b:Container>

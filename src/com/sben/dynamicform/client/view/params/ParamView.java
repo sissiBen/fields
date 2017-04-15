@@ -12,6 +12,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.sben.dynamicform.client.ParamFactory;
+import com.sben.dynamicform.client.extra.MyDatePicker;
 import com.sben.dynamicform.client.model.Param;
 import com.sben.dynamicform.client.model.PossibleValue;
 
@@ -48,6 +49,10 @@ public class ParamView extends Composite {
 		}else if(paramWidget instanceof ValueListBox){
 			return ((ValueListBox)paramWidget).validate();
 		}
+		else if(paramWidget instanceof MyDatePicker){
+			return ((MyDatePicker)paramWidget).validate();
+		}
+		
 		return false;
 	}
 

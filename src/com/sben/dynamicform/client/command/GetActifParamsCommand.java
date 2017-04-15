@@ -32,29 +32,29 @@ public class GetActifParamsCommand implements Command{
 	   Param param= new Param();
 	   param.setId(3);
 	   param.setType(Param.STRING_TYPE);
-	   param.setName("Livre préféré");
-	   param.setRequired(false);
+	   param.setName("Name");
+	   param.setRequired(true);
 	   list.add(param);
 	   
 	   param= new Param();
 	   param.setId(4);
 	   param.setType(Param.LIST_TYPE);
-	   param.setName("Ceinture");
+	   param.setName("Level");
 	   
 	   List<PossibleValue> values = new ArrayList<PossibleValue>();
 	   PossibleValue value =  new PossibleValue();
 	   value.setId(1);
-	   value.setName("Ceinture blanche");
+	   value.setName("Level 1");
 	   values.add(value);
 	   
 	   value =  new PossibleValue();
 	   value.setId(2);
-	   value.setName("Ceinture jaune");
+	   value.setName("Level 2");
 	   values.add(value);
 	   
 	   value =  new PossibleValue();
 	   value.setId(3);
-	   value.setName("Ceinture noire");
+	   value.setName("Level 3");
 	   values.add(value);
 	   
 	   param.setValues(values);
@@ -65,13 +65,14 @@ public class GetActifParamsCommand implements Command{
 	   param= new Param();
 	   param.setId(5);
 	   param.setType(Param.DATE_TYPE);
-	   param.setName("Date de validation");
+	   param.setName("Date");
+	   param.setRequired(true);
 	   list.add(param);
 	   
 	   param= new Param();
 	   param.setId(6);
 	   param.setType(Param.BOOLEAN_TYPE);
-	   param.setName("Yes");
+	   param.setName("Delivery");
 	   list.add(param);
 	   
 	   return list;
