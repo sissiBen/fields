@@ -11,6 +11,7 @@ import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import com.sben.dynamicform.client.command.GetActifParamsCommand;
@@ -92,7 +93,9 @@ public class MyForm extends Composite {
 	  }
 
 public JSONObject getData() {
+	
 	JSONObject paramatersMap = new JSONObject();
+	String toDisplay = "values >>>> ";
 		
 	for (int i = 0; i <fieldSet.getWidgetCount(); i++) {
 			ParamView widget = (ParamView) fieldSet.getWidget(i);
@@ -100,8 +103,10 @@ public JSONObject getData() {
 			System.out.println("widget.getValue()  " + widget.getValue());
 			
 			paramatersMap.put(widget.getParam().getId()+"", widget.getValue());
+			toDisplay = toDisplay + " ---- "+widget.getParam().getName() + ":" + widget.getValue();
 		}
 		System.out.println("Data on validate : " + paramatersMap.toString());
+		Window.alert(toDisplay);
 		return paramatersMap;
 	}
 

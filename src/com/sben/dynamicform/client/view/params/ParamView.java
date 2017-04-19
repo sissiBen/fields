@@ -74,7 +74,6 @@ public class ParamView extends Composite {
 			return new JSONString(((ValueBoxBase)paramWidget).getValue()+"");
 		}else if(paramWidget instanceof ValueListBox){
 			System.out.println( "ValueListBox getvalue " + ((ValueListBox)paramWidget).getValue()+"");
-//			return ((ValueListBox<String>)paramWidget).getValue();
 			return  ((ValueListBox<PossibleValue>) paramWidget).getValue()==null ?null: new JSONString(((ValueListBox<PossibleValue>) paramWidget).getValue().getId()+"");
 			
 		}
