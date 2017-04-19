@@ -14,7 +14,7 @@ public class Dynamicform implements EntryPoint {
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
-	MyForm form = new MyForm();
-	form.init();
-	RootPanel.get().add(form);}
+		MyForm form = new MyForm();
+		form.init();
+		RootPanel.get().add(form);}
 }

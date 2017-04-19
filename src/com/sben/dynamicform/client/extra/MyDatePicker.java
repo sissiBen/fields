@@ -21,7 +21,10 @@ import com.google.gwt.editor.client.HasEditorErrors;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.web.bindery.event.shared.HandlerRegistration;
 
-
+/**
+ * extends DatePicker and implements some interfaces to be able to add validators like blankValidator ...
+ *
+ */
 
 public class MyDatePicker extends DatePicker implements HasValidators<Date>, HasEditorErrors<Date>, HasErrorHandler,
 HasBlankValidator<Date>,HasValue<Date>, Editor<Date> {

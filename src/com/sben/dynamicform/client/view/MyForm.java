@@ -19,6 +19,10 @@ import com.sben.dynamicform.client.command.OnGetObjectsDatasListener;
 import com.sben.dynamicform.client.model.Param;
 import com.sben.dynamicform.client.view.params.ParamView;
 
+/**
+ * the main view, where we add paramaters widget
+ *
+ */
 public class MyForm extends Composite {
 	
 	@UiField
@@ -52,21 +56,13 @@ public class MyForm extends Composite {
 
 
 	public void init() {
-		
+		//getting list paramaters 
 		GetActifParamsCommand command = new GetActifParamsCommand(new OnGetObjectsDatasListener() {
 			
 			@Override
 			public void getObjectDatas(List<? extends Object> list) {
 				
-				System.out.println("GetActifParamsByModelTypeCommand retour list params : " + (List<Param>)list);
 				List<Param> params = (List<Param>)list;
-				System.err.println("params " + params);
-				for (Param param : params) {
-					System.err.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> name " +param.getName());
-					System.err.println("id " +param.getId());
-					System.err.println(" type " +param.getType());
-					System.err.println(" values " +param.getValues());
-				}
 				addParamsWidgets(params);
 			}
 		});
@@ -76,6 +72,7 @@ public class MyForm extends Composite {
 
 
 	protected void addParamsWidgets(List<Param> params) {
+		// add widgets 
 		for (Param param : params) {
 			
 			ParamView paramWidget = new ParamView(param);
@@ -83,6 +80,7 @@ public class MyForm extends Composite {
 		}
 		
 	}
+	
 	@UiHandler("validatebt")
 	void handleClick(ClickEvent e) {
 		boolean valid =  validate();
@@ -92,22 +90,19 @@ public class MyForm extends Composite {
 	    
 	  }
 
-public JSONObject getData() {
-	
-	JSONObject paramatersMap = new JSONObject();
-	String toDisplay = "values >>>> ";
+	public JSONObject getData() {
 		
-	for (int i = 0; i <fieldSet.getWidgetCount(); i++) {
-			ParamView widget = (ParamView) fieldSet.getWidget(i);
-			System.out.println("widget.getParamId()  " + widget.getParam().getName());
-			System.out.println("widget.getValue()  " + widget.getValue());
+		JSONObject paramatersMap = new JSONObject();
+		String toDisplay = "values >>>> ";
 			
-			paramatersMap.put(widget.getParam().getId()+"", widget.getValue());
-			toDisplay = toDisplay + " ---- "+widget.getParam().getName() + ":" + widget.getValue();
-		}
-		System.out.println("Data on validate : " + paramatersMap.toString());
-		Window.alert(toDisplay);
-		return paramatersMap;
+		for (int i = 0; i <fieldSet.getWidgetCount(); i++) {
+				ParamView widget = (ParamView) fieldSet.getWidget(i);
+				paramatersMap.put(widget.getParam().getId()+"", widget.getValue());
+				toDisplay = toDisplay + " ---- "+widget.getParam().getName() + ":" + widget.getValue();
+			}
+			System.out.println("Data on validate : " + paramatersMap.toString());
+			Window.alert(toDisplay);
+			return paramatersMap;
 	}
-
+	
 }

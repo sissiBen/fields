@@ -19,14 +19,13 @@ public class GetActifParamsCommand implements Command{
 
 	@Override
 	public void execute() {
-		// TODO Recuperer la liste des parametres
-		// ici je vais créer une liste
 		List<Param> list = populateParams();
-		
 		onGetObjectsDatasListener.getObjectDatas(list);
 	}
 
 	private List<Param> populateParams() {
+		
+		// just an example, we can get the list from a database ...
 		
 	   List<Param> list= new ArrayList<Param>();
 	   Param param= new Param();

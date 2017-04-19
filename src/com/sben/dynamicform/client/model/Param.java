@@ -10,6 +10,7 @@ import com.google.web.bindery.autobean.shared.AutoBeanFactory;
 
 public class Param {
 	
+	// param types
 	public static final String STRING_TYPE = "stringType";
 	public static final String LIST_TYPE = "listType";
 	public static final String DATE_TYPE = "dateType";
@@ -17,9 +18,10 @@ public class Param {
 	
 	private int id;
 	private String name;
-	private String modelType;
 	private String type;
 	private boolean required;
+	
+	// values to select in case of a list type
 	private List<PossibleValue> values = new ArrayList<PossibleValue>();
 	
 	
@@ -55,16 +57,6 @@ public class Param {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	
-
-	public String getModelType() {
-		return modelType;
-	}
-
-	public void setModelType(String modelType) {
-		this.modelType = modelType;
 	}
 
 	public String getType() {

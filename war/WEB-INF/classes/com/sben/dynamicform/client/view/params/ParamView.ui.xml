@@ -8,9 +8,7 @@
 	}
 	</ui:style>
 	<b:FormGroup>
-     <b:FormLabel ui:field="label" addStyleNames="col-lg-2"  styleName="{.text-align-left}">param</b:FormLabel>
-      <g:FlowPanel ui:field="flowPanel" addStyleNames="col-lg-4">
-       
-      </g:FlowPanel>
+      <b:FormLabel ui:field="label" addStyleNames="col-lg-2"  styleName="{.text-align-left}">param</b:FormLabel>
+      <g:FlowPanel ui:field="flowPanel" addStyleNames="col-lg-4"/>
     </b:FormGroup>
 </ui:UiBinder> 
